@@ -1,0 +1,23 @@
+:host { display: block; }
+.lead { margin: 0; max-width: 60ch; }
+.events { display: grid; gap: 16px; }
+.event { padding: 18px; }
+.event-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+.event-title h2 { font-size: 18px; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; font-size: 13px; }
+.meta span { display: inline-flex; align-items: center; gap: 5px; }
+.desc { margin: 8px 0 0; max-width: 70ch; }
+.event-side { display: flex; align-items: center; gap: 2px; flex: none; }
+.event-side app-status-badge { margin-right: 8px; }
+.progress-row { display: flex; align-items: center; gap: 12px; margin: 16px 0; }
+.progress { flex: 1; height: 10px; border-radius: 99px; background: var(--hover); overflow: hidden; }
+.progress span { display: block; height: 100%; background: var(--success); border-radius: 99px; transition: width .3s ease; }
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.phase-col { border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); min-width: 0; padding-bottom: 6px; }
+.phase-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 6px 4px 14px; }
+.phase-head h3 { font-size: 13.5px; }
+.mini { border-top: 1px solid var(--line); }
+.mini :is(.task-row) { padding: 10px 10px 10px 12px; grid-template-columns: auto 1fr auto; }
+.mini .task-badges { grid-column: 2 / 4; grid-row: 2; }
+.small { font-size: 12.5px; padding: 0 14px 8px; margin: 0; }
+@media (max-width: 1000px) { .phases { grid-template-columns: 1fr; } .event-head { flex-direction: column; } }

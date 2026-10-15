@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "7df61bff-8571-4471-aa58-339ee71d90ba",
+      "title": "1",
+      "description": "Get up",
+      "date": "2026-10-15",
+      "startTime": "05:30",
+      "endTime": "06:00",
+      "category": "Other",
+      "priority": "Medium",
+      "status": "Pending",
+      "phase": "After",
+      "eventId": null,
+      "goalId": null,
+      "location": "",
+      "reminderAt": "2026-10-15T12:45:00.000Z",
+      "notes": "",
+      "createdAt": "2026-10-14T12:45:43.683Z",
+      "updatedAt": "2026-10-14T12:47:02.394Z",
+      "completedAt": null
+    }
+  ],
+  "events": [],
+  "journalEntries": [],
+  "goals": []
+}

@@ -1,0 +1,53 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell" [class.collapsed]="collapsed()" [class.mobile-open]="mobileOpen()">
+  <aside class="sidebar" aria-label="Primary">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"><app-icon name="calendar-check" [size]="20" /></span>
+      <span class="brand-name">LIFE SCHEDULE</span>
+    </div>
+    <nav>
+      <ul>
+        @for (item of nav; track item.path) {
+          <li>
+            <a [routerLink]="item.path" routerLinkActive="active" [title]="collapsed() ? item.label : ''">
+              <app-icon [name]="item.icon" />
+              <span class="nav-label">{{ item.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <button class="collapse-btn" type="button" (click)="collapsed.set(!collapsed())" [attr.aria-label]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'">
+      <app-icon [name]="collapsed() ? 'panel-open' : 'panel-close'" />
+      <span class="nav-label">Collapse</span>
+    </button>
+  </aside>
+  <div class="scrim" (click)="mobileOpen.set(false)"></div>
+
+  <div class="main-col">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" type="button" aria-label="Open navigation" (click)="mobileOpen.set(true)"><app-icon name="menu" /></button>
+      <div class="page-heading">
+        <nav class="crumbs" aria-label="Breadcrumb"><span>LIFE SCHEDULE</span><app-icon name="chevron-right" [size]="13" /><span>{{ title() }}</span></nav>
+        <h1>{{ title() }}</h1>
+      </div>
+      <form class="search" role="search" (submit)="$event.preventDefault(); search(q.value)">
+        <app-icon name="search" [size]="16" />
+        <input #q type="search" placeholder="Search tasks" aria-label="Search tasks" />
+      </form>
+      <span class="today-chip"><app-icon name="calendar-days" [size]="16" />{{ today }}</span>
+      <button class="icon-btn bell" type="button" [attr.aria-label]="overdue() ? overdue() + ' overdue tasks' : 'No overdue tasks'" title="Overdue tasks" (click)="openOverdue()">
+        <app-icon name="bell" />
+        @if (overdue() > 0) { <span class="dot">{{ overdue() > 9 ? '9+' : overdue() }}</span> }
+      </button>
+      <button class="icon-btn" type="button" (click)="theme.toggle()" [attr.aria-label]="theme.theme() === 'light' ? 'Switch to dark theme' : 'Switch to light theme'" title="Toggle theme">
+        <app-icon [name]="theme.theme() === 'light' ? 'moon' : 'sun'" />
+      </button>
+      <a class="icon-btn" routerLink="/settings" aria-label="Settings" title="Settings"><app-icon name="user" /></a>
+    </header>
+    <main id="main" class="content"><router-outlet /></main>
+  </div>
+</div>
+<app-task-dialog />
+<app-confirm-dialog />
+<app-toast-host />

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.angular/
+backend/.env
+backend/data/backups/
+backend/data/scratch.txt
+backend/data/*.tmp
