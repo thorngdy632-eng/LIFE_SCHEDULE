@@ -17,20 +17,18 @@ function getApp() {
 }
 
 export default async function handler(req, res) {
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
   try {
     const app = await getApp();
     return app(req, res);
   } catch (err) {
     console.error('[api] initialization failed:', err);
     if (!res.headersSent) {
-      res.status(500).json({
+      res.statusCode = 500;
+      res.setHeader('content-type', 'application/json');
+      res.end(JSON.stringify({
         success: false,
         error: { message: err.message || 'Server initialization failed', details: [] },
-      });
+      }));
     }
   }
 }
