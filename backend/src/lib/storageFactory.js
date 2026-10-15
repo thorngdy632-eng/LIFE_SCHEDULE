@@ -1,10 +1,10 @@
-import { StorageService } from './services/storage.service.js';
-import { BlobStorage } from './storage/blob.js';
-import { MemoryStorage } from './storage/memory.js';
+import { StorageService } from '../services/storage.service.js';
+import { MemoryStorage } from '../storage/memory.js';
 
 export async function createStorage() {
   const hasBlob = !!process.env.BLOB_READ_WRITE_TOKEN;
   if (hasBlob) {
+    const { BlobStorage } = await import('../storage/blob.js');
     const s = new BlobStorage();
     await s.init();
     return s;

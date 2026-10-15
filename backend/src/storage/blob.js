@@ -50,7 +50,7 @@ export class BlobStorage {
     await this.#write(this._data);
   }
   async backup() {
-    const name = life-schedule-backup-.json;
+    const name = `life-schedule-backup-${Date.now()}.json`;
     await put(name, JSON.stringify(await this.read(), null, 2), { access: 'private', addRandomSuffix: false });
     return name;
   }
