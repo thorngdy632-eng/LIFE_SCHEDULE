@@ -9,5 +9,8 @@
     "dev": "npm run dev --prefix backend & npm start --prefix frontend",
     "build": "npm run build --prefix frontend && npm run build:vercel --prefix frontend",
     "test": "npm test --prefix backend"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
   }
 }
